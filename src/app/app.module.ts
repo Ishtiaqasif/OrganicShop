@@ -23,6 +23,11 @@ import { AuthService } from './Services/auth.service';
 import { AuthGuard as AuthGuard } from './Services/auth-guard.service';
 import { UserService } from './Services/user.service';
 import { AdminAuthGuard } from './Services/admin-auth-guard.service';
+import { ProductFormComponent } from './Components/Admin/product-form/product-form.component';
+import { CategoryService } from './Services/category.service';
+import { FormsModule } from '@angular/forms';
+import { ProductService } from './Services/product.service';
+import { CustomFormsModule } from 'ng2-validation';
 
 @NgModule({
   declarations: [
@@ -35,10 +40,13 @@ import { AdminAuthGuard } from './Services/admin-auth-guard.service';
     OrderSuccessComponent,
     MyOrdersComponent,
     AdminProductsComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    CustomFormsModule,
     NgbModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -54,6 +62,8 @@ import { AdminAuthGuard } from './Services/admin-auth-guard.service';
       { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
       { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
       
+      { path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+      { path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] },
     ]),
@@ -63,7 +73,9 @@ import { AdminAuthGuard } from './Services/admin-auth-guard.service';
     AuthService,
     AdminAuthGuard,
     AuthGuard,
-    UserService
+    UserService,
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

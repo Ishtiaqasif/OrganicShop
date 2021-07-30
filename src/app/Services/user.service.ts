@@ -20,7 +20,7 @@ export class UserService {
       name: user.displayName,
       email: user.email
     }).then((x) => {
-      console.log('User saved!');
+      //console.log('User saved!');
     }).catch(err => {
       console.log('Error saving user: ', err);
     });

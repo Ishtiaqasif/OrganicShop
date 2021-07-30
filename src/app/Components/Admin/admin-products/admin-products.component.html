@@ -1,1 +1,25 @@
-<p>admin-products works!</p>
+<p>
+    <a routerLink="new" class="btn btn-primary">New Product</a>
+</p>
+<table class="table table-striped ">
+<thead>
+    <tr>
+        <th>#</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let p of products$|async; let i = index">
+        <td>{{i+1}}</td>
+        <td><img [src]="p.imageUrl"class="img-thumbnail img-fluid" alt="no image"></td>
+        <td>{{p.title}}</td>
+        <td>{{p.price|currency: "BDT"}}</td>
+        <td>
+            <a class="btn btn-sm btn-primary m-1" [routerLink]="['/admin/products', p.key]">Update</a>
+        </td>
+    </tr>
+</tbody>
+</table>
