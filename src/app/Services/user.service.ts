@@ -18,9 +18,9 @@ export class UserService {
   save(user: firebase.User) {
     this.db.object('/users/' + user.uid).update({
       name: user.displayName,
-      email: user.email
+      email: user.email,
+      isAdmin: true
     }).then((x) => {
-      //console.log('User saved!');
     }).catch(err => {
       console.log('Error saving user: ', err);
     });

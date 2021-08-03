@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent {
+public isCollapsed = false;
   appUser: AppUser|null = null;
   constructor(private auth: AuthService, private router: Router) {
     auth.appUser$.subscribe(appUser => this.appUser = appUser);

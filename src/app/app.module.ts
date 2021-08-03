@@ -28,6 +28,9 @@ import { CategoryService } from './Services/category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './Services/product.service';
 import { CustomFormsModule } from 'ng2-validation';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +49,8 @@ import { CustomFormsModule } from 'ng2-validation';
   imports: [
     BrowserModule,
     FormsModule,
+    NgxPaginationModule,
+    NgxDatatableModule,
     CustomFormsModule,
     NgbModule,
     AppRoutingModule,
@@ -67,7 +72,7 @@ import { CustomFormsModule } from 'ng2-validation';
       { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] },
     ]),
-    NgbModule,
+    NgbModule
   ],
   providers: [
     AuthService,
