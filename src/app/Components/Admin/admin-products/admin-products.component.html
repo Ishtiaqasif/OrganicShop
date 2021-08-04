@@ -5,6 +5,8 @@
   <p>
     <input type="text" #query class="form-control" (keyup)="filterProducts(query.value)" placeholder="Search...">
   </p>
+
+
   <table class="table table-hover">
     <thead class="table-dark">
       <tr>
@@ -45,17 +47,30 @@
     </thead>
     <tbody>
       <tr *ngFor="let product of filteredProducts
-      |paginate: { itemsPerPage: 3, currentPage: page, totalItems: filteredProducts.length };
+      |paginate: { itemsPerPage: itemsPerPage, currentPage: page, totalItems: filteredProducts.length };
       let i = index;">
-        <td scope="row">{{i+1}}</td>
+        <td scope="row">{{(i+1)+((page -1) * itemsPerPage)}}</td>
         <td><img [src]="product.imageUrl" class="img-thumbnail img-fluid" alt="no image"></td>
         <td>{{product.title}}</td>
-        <td>{{product.price|currency:"BDT"}}</td>
+        <td>{{product.price|currency:"BDT":true}}</td>
         <td><button type="button" class="btn btn-warning"
             [routerLink]="['/admin/products/', product.key]">Update</button></td>
       </tr>
     </tbody>
 
   </table>
-  <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
+  <div class="row">
+    <div class="col-6">
+      <pagination-controls class="text-left" (pageChange)="page = $event"></pagination-controls>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-2">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Limit</span>
+        <input type="number" (change)="limitChange($event.target)" class="form-control" [value]="itemsPerPage">
+      </div>
+    </div>
+  </div>
+  
+
 </div>

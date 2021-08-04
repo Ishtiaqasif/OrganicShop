@@ -31,7 +31,6 @@ import { CustomFormsModule } from 'ng2-validation';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-
 @NgModule({
   declarations: [
     AppComponent,

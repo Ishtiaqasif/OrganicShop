@@ -15,6 +15,8 @@ export class AdminProductsComponent implements OnDestroy {
   subscription: Subscription = Subscription.EMPTY;
 
   page = 1;
+  itemsPerPage = 3;
+  itemsPerPageDefault = 3;;
 
   constructor(private productService: ProductService) {
     this.fetchData();
@@ -48,6 +50,10 @@ export class AdminProductsComponent implements OnDestroy {
     );
   }
 
+  limitChange(element: any) {
+    console.log(element.value);
+    this.itemsPerPage = +element.value === 0 ? this.itemsPerPageDefault : +element.value;
+  }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
