@@ -10,7 +10,7 @@ import { Category } from '../Models/category';
 export class CategoryService {
   constructor(private db: AngularFireDatabase) {}
 
-  getCategories() {
+  getAllCategories() {
     let x = this.db
       .list<Category>('/categories', ref => ref.orderByChild('name'))
       .snapshotChanges()

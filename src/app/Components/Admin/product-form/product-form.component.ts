@@ -22,7 +22,7 @@ export class ProductFormComponent{
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.categories$ = category.getCategories();
+    this.categories$ = category.getAllCategories();
 
     this.productKey = this.route.snapshot.paramMap.get('id');
 
