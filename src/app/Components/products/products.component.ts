@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { Category } from 'src/app/Models/category';
-import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
@@ -13,23 +11,22 @@ import { ProductService } from 'src/app/Services/product.service';
 })
 export class ProductsComponent {
   products$: Observable<any>;
-  categories$: Observable<any>;
+  filteredProducts$: Observable<any> = new Observable();
   category: string | null = '';
 
   constructor(
     private productService: ProductService,
-    private categoryService: CategoryService,
     private route: ActivatedRoute
   ) {
     this.products$ = this.productService.getAllProducts();
-    this.categories$ = this.categoryService.getAllCategories();
+    
 
     route.queryParamMap.subscribe((params) => {
       this.category = params.get('category');
       if (this.category == 'all') {
-        this.products$ = this.products$;
+        this.filteredProducts$ = this.products$;
       } else if (this.category) {
-        this.products$ = this.products$.pipe(
+        this.filteredProducts$ = this.products$.pipe(
           map((products) =>
             products.filter(
               (product: any) => product.category === this.category
