@@ -31,8 +31,9 @@ export class AdminProductsComponent implements OnDestroy {
   }
 
   filterProducts(query: string): void {
+    this.page = 1
     this.filteredProducts = this.products.filter((p) =>
-      p.title.toLowerCase().includes(query.toLowerCase())
+      p.title.toLowerCase().includes(query.trim().toLowerCase())
     );
   }
   sortingOrder = 1;
