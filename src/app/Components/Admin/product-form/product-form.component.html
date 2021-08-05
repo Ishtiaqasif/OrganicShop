@@ -49,12 +49,6 @@
     </form>
   </div>
   <div class="col-6 d-flex justify-content-center align-items-center">
-    <div *ngIf="product.title" class="card" style="width: 18rem;">
-      <img [src]="product.imageUrl" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">{{product.title}}</h5>
-        <p class="card-text bdt-currency">{{product.price|currency:"&#2547;"}}</p>
-      </div>
-    </div>
+    <product-card [product]="product" [showActions]="true"></product-card>
   </div>
 </div>

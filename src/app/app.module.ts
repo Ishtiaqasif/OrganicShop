@@ -31,6 +31,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ProductFilterComponent } from './Components/products/product-filter/product-filter.component';
+import { ProductCardComponent } from './Components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ProductFilterComponent } from './Components/products/product-filter/pro
     AdminProductsComponent,
     AdminOrdersComponent,
     ProductFormComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

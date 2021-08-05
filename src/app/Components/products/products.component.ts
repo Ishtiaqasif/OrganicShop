@@ -25,7 +25,8 @@ export class ProductsComponent {
       this.category = params.get('category');
       if (this.category == 'all') {
         this.filteredProducts$ = this.products$;
-      } else if (this.category) {
+      } 
+      else if (this.category) {
         this.filteredProducts$ = this.products$.pipe(
           map((products) =>
             products.filter(
@@ -33,6 +34,9 @@ export class ProductsComponent {
             )
           )
         );
+      }
+      else {
+        this.filteredProducts$ = this.products$;
       }
     });
   }

@@ -1,19 +1,12 @@
 <div class="row">
-    <div class="col-3"> 
+    <div class="col-3">
         <product-filter [category]="category"></product-filter>
     </div>
     <div class="col">
         <div class="row">
             <div class="col" *ngFor="let product of filteredProducts$ | async; let i = index;">
                 <div class="m-2 card-group">
-                    <div class="card animatedHover" style="width: 18rem;">
-                        <img [src]="product.imageUrl" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">{{product.title}}</h5>
-                            <p class="card-text bdt-currency">{{product.price|currency:"&#2547;"}}</p>
-                            <a href="#" class="btn btn-primary">Add to cart</a>
-                        </div>
-                    </div>
+                    <product-card [product]="product" [showActions]="true"></product-card>
                 </div>
             </div>
         </div>
