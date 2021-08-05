@@ -2,7 +2,7 @@
     <div class="col-3">
         <product-filter [category]="category"></product-filter>
     </div>
-    <div class="col-6">
+    <div class="col">
         <div class="row">
             <div class="col text-center" *ngFor="let product of filteredProducts$ | async; let i = index;">
                 <div class="m-2 card-group">
