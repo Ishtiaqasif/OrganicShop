@@ -1,10 +1,12 @@
-<ul class="list-group">
-    <a class="list-group-item primaryHover" [class.active]="category=='all'" routerLink="/"
-        [queryParams]="{category: 'all'}">
-        All Categories
-    </a>
-    <a *ngFor="let c of categories$ | async;" class="list-group-item primaryHover" routerLink="/"
-        [queryParams]="{category: c.key}" [class.active]="c.key === category">
-        {{c.name}}
-    </a>
-</ul>
+<div class="sticky-top m-2">
+    <ul class="list-group">
+        <a class="list-group-item primaryHover" [class.active]="category=='all'" routerLink="/"
+            [queryParams]="{category: 'all'}">
+            All Categories
+        </a>
+        <a *ngFor="let c of categories$ | async;" class="list-group-item primaryHover" routerLink="/"
+            [queryParams]="{category: c.key}" [class.active]="c.key === category">
+            {{c.name}}
+        </a>
+    </ul>
+</div>
