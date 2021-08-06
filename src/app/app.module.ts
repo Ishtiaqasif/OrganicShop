@@ -32,6 +32,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ProductFilterComponent } from './Components/products/product-filter/product-filter.component';
 import { ProductCardComponent } from './Components/product-card/product-card.component';
+import { ShoppingCartService } from './Services/shopping-cart.service';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { ProductCardComponent } from './Components/product-card/product-card.com
     AuthGuard,
     UserService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })

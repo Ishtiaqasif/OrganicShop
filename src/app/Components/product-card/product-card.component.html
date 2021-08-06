@@ -1,10 +1,19 @@
-<div class="card animatedHover" style="width: 18rem;">
+<div class="card" style="width: 18rem;">
     <img *ngIf="product?.imageUrl" [src]="product?.imageUrl" class="card-img-top" alt="product?.title">
     <div class="card-body">
         <h5 class="card-title" *ngIf="product?.title">{{product?.title}}</h5>
         <p class="card-text bdt-currency">{{product?.price|currency:"&#2547;"}}</p>
     </div>
-    <div class="card-footer">
-        <a *ngIf="showActions" class="btn btn-primary w-100">Add to cart</a>
+    <div *ngIf="showActions" class="card-footer">
+        <button *ngIf="getQuantity() === 0; else updateQuantity" type="button"  (click)="addToCart()" class="btn btn-secondary w-100">Add to cart</button>
+        <ng-template #updateQuantity>
+            <div class="row m-0">
+                <div class="col-2 btn btn-outline-secondary" (click)="removeFromCart()">&#10134;</div>
+                <div class="col-8 text-center my-auto">
+                    {{getQuantity()}} in cart
+                </div>
+                <div class="col-2 btn btn-outline-secondary" (click)="addToCart()" >&#10133;</div>
+            </div>
+        </ng-template>
     </div>
 </div>
