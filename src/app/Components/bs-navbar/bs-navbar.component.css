@@ -5,3 +5,7 @@
 .dropdown-menu{
     z-index: 1030;
 }
+
+.position-sticky{
+    z-index: 1050;
+}
