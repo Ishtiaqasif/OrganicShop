@@ -33,6 +33,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ProductFilterComponent } from './Components/products/product-filter/product-filter.component';
 import { ProductCardComponent } from './Components/product-card/product-card.component';
 import { ShoppingCartService } from './Services/shopping-cart.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,13 @@ import { ShoppingCartService } from './Services/shopping-cart.service';
       { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard] },
       { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] },
     ]),
-    NgbModule
+    NgbModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     AuthService,
