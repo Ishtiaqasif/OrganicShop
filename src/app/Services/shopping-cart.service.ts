@@ -17,6 +17,8 @@ export class ShoppingCartService {
       createdOn: new Date().toString(),
       items: [],
       totalItemsCount: 0,
+      cartItems: [],
+      grandTotalPrice: 0
     };
     return this.db.list<ShoppingCart>('/shopping-carts').push(cart);
   }

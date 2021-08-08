@@ -7,6 +7,16 @@ export class ShoppingCart {
 
   }
 
+  get cartItems(){
+    return Object.values(this.items).filter(product => product.quantity > 0);
+  }
+
+  get grandTotalPrice(): number {
+  
+    return this.cartItems.reduce((a, cartItem) => a + (cartItem.product.price * cartItem.quantity), 0)
+
+  }
+
   get totalItemsCount(): number {
     let count = 0;
     for (let productId in this.items) {
