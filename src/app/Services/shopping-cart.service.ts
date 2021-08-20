@@ -15,17 +15,22 @@ export class ShoppingCartService {
   private createCart() {
     let cart: ShoppingCart = {
       createdOn: new Date().toString(),
+      itemsMap:{},
       items: [],
       totalItemsCount: 0,
       cartItems: [],
       grandTotalPrice: 0
     };
-    return this.db.list<ShoppingCart>('/shopping-carts').push(cart);
+    //console.log(cart);
+    return this.db.list<any>('/shopping-carts').push(cart);
   }
 
   async getCart(): Promise<Observable<ShoppingCart>> {
+    debugger;
     let cartId = await this.getOrCreateCartId();
-    return this.db.object<ShoppingCart>(`/shopping-carts/${cartId}`).valueChanges().pipe(map((cart:ShoppingCart|null) => new ShoppingCart(<any>cart?.items)));
+    let x = this.db.object<ShoppingCart>(`/shopping-carts/${cartId}`).valueChanges().pipe(map((cart:ShoppingCart|null) => new ShoppingCart(<any>cart?.items)));
+    x.pipe(map(x => console.log(x.items)));
+    return x;
   }
 
   getItem(
