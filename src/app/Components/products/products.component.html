@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col" *ngFor="let product of filteredProducts$ | async; let i = index;">
                 <div class="m-2 card-group">
-                    <product-card [product]="product" [showActions]="true" [shoppingCart]="cart"></product-card>
+                    <product-card [product]="product" [showActions]="true" [shoppingCart]="cart$|async"></product-card>
                 </div>
             </div>
         </div>

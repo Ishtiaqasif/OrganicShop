@@ -1,3 +1,9 @@
 img{
     max-width: 6rem;
 }
+
+.thumbnail{
+    aspect-ratio: 1;
+    border-radius: 100%;
+    background-size: cover;
+}

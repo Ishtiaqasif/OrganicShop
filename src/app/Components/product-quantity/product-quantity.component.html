@@ -1,0 +1,7 @@
+<div class="row m-0">
+    <div class="col-2 btn btn-outline-secondary" (click)="removeFromCart()">&#10134;</div>
+    <div class="col-8 text-center my-auto">
+        {{shoppingCart?.getQuantity(product)}} in cart
+    </div>
+    <div class="col-2 btn btn-outline-secondary" (click)="addToCart()" >&#10133;</div>
+</div>

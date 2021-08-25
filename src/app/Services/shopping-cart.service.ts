@@ -13,24 +13,16 @@ export class ShoppingCartService {
   constructor(private db: AngularFireDatabase) {}
 
   private createCart() {
-    let cart: ShoppingCart = {
+    let cart: any = {
       createdOn: new Date().toString(),
-      itemsMap:{},
-      items: [],
-      totalItemsCount: 0,
-      cartItems: [],
-      grandTotalPrice: 0
+      items: []
     };
-    //console.log(cart);
     return this.db.list<any>('/shopping-carts').push(cart);
   }
 
   async getCart(): Promise<Observable<ShoppingCart>> {
-    debugger;
     let cartId = await this.getOrCreateCartId();
-    let x = this.db.object<ShoppingCart>(`/shopping-carts/${cartId}`).valueChanges().pipe(map((cart:ShoppingCart|null) => new ShoppingCart(<any>cart?.items)));
-    x.pipe(map(x => console.log(x.items)));
-    return x;
+    return  this.db.object<ShoppingCart>(`/shopping-carts/${cartId}`).valueChanges().pipe(map((cart:ShoppingCart|null) => new ShoppingCart(<any>cart?.items)));
   }
 
   getItem(
@@ -72,4 +64,20 @@ export class ShoppingCartService {
       })
     );
   }
+
+  async clearCart(): Promise<boolean> {
+    let isDeleted: boolean = false;
+    let cartId = await this.getOrCreateCartId();
+
+    await this.db.object(`/shopping-carts/${cartId}`).remove()
+    .then((x) => {
+      isDeleted = true;
+    })
+    // .catch((e) => {
+    // });
+
+   return isDeleted;
+
+  }
+
 }

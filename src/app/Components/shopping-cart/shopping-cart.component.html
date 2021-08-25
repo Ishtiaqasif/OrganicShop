@@ -15,9 +15,9 @@
         <tbody>
             <tr *ngFor="let item of cart.cartItems; let i = index">
                 <td>{{i + 1}}</td>
-                <td><img [src]="item.product.imageUrl" class="img-thumbnail img-fluid" alt="no image"></td>
+                <td><img [src]="item.product.imageUrl" class="img-thumbnail img-fluid thumbnail" alt="no image"></td>
                 <td>{{item.product.title}}</td>
-                <td>{{item.quantity}}</td>
+                <td><product-quantity [product]="item.product" [shopping-cart]="cart"></product-quantity> </td>
                 <td class="bdt-currency"><div class="w-50 text-end">{{item.product.price * item.quantity | currency: '&#2547;'}}</div></td>
             </tr>
         </tbody>
@@ -29,4 +29,5 @@
             </tr>
            </tfoot>
     </table>
+    <button class="btn-danger btn btn-sm" (click)="clearCart()">Clean Shopping Cart</button>
 </ng-container>
