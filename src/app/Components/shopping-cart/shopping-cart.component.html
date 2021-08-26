@@ -8,8 +8,10 @@
                 <th>Image</th>
                 <th>Product</th>
                 <th>Quantity</th>
-                
-                <th><div class="w-50 text-end">Total Price</div></th>
+
+                <th>
+                    <div class="w-50 text-end">Total Price</div>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -17,17 +19,27 @@
                 <td>{{i + 1}}</td>
                 <td><img [src]="item.product.imageUrl" class="img-thumbnail img-fluid thumbnail" alt="no image"></td>
                 <td>{{item.product.title}}</td>
-                <td><product-quantity [product]="item.product" [shopping-cart]="cart"></product-quantity> </td>
-                <td class="bdt-currency"><div class="w-50 text-end">{{item.product.price * item.quantity | currency: '&#2547;'}}</div></td>
+                <td>
+                    <product-quantity [product]="item.product" [shopping-cart]="cart"></product-quantity>
+                </td>
+                <td class="bdt-currency">
+                    <div class="w-50 text-end">{{item.product.price * item.quantity | currency: '&#2547;'}}</div>
+                </td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
-              <th class="text-end" colspan="3">Grand Total :</th>
-              <th>{{cart.totalItemsCount}}</th>
-              <th class="bdt-currency"><div class="w-50 text-end">{{cart.grandTotalPrice | currency: '&#2547;'}}</div> </th>
+                <th class="text-end" colspan="3">Grand Total :</th>
+                <th>{{cart.totalItemsCount}}</th>
+                <th class="bdt-currency">
+                    <div class="w-50 text-end">{{cart.grandTotalPrice | currency: '&#2547;'}}</div>
+                </th>
             </tr>
-           </tfoot>
+        </tfoot>
     </table>
-    <button class="btn-danger btn btn-sm" (click)="clearCart()">Clean Shopping Cart</button>
+    <div class="d-flex justify-content-between">
+        <button *ngIf="cart.totalItemsCount" class="btn-outline-danger btn btn-sm" (click)="clearCart()">Clean Shopping Cart</button>
+        <a *ngIf="cart.totalItemsCount" routerLink="/check-out" class="btn-success btn">Checkout</a>
+    </div>
+
 </ng-container>
