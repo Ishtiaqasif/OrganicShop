@@ -6,11 +6,12 @@ import { ShoppingCartItem } from "./ShoppingCartItem";
 import { User } from "./user";
 
 export class Order {
-    datePlaced: Date;
+    uid: string;
+    datePlaced: string;
     items: OrderItem[];
 
     constructor(public user: User,public shippingDetails: ShippingDetails, shoppingCart: ShoppingCart) {
-        this.datePlaced = new Date();
+        this.datePlaced = new Date().toString();
         this.items = shoppingCart.cartItems.map((item: ShoppingCartItem) => {
             
             let product: Product = {
@@ -27,7 +28,8 @@ export class Order {
             }
 
             return orderItem;
-        })
+        });
+        this.uid = this.user.userId;
     }
 }
     
