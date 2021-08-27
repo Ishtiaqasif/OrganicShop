@@ -20,10 +20,6 @@ import { AdminAuthGuard } from './Services/admin-auth-guard.service';
   ],
   imports: [
     ShareModule,
-    CommonModule,
-    FormsModule,
-    NgxPaginationModule,
-    NgxDatatableModule,
     RouterModule.forChild([
       {
         path: 'admin/products/new',

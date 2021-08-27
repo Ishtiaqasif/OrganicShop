@@ -5,6 +5,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShareModule } from '../Shared/share.module';
 
 
 
@@ -13,8 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BsNavbarComponent, HomeComponent, LoginComponent
   ],
   imports: [
-    CommonModule,
-    NgbModule,
+    ShareModule,
     RouterModule.forChild([
       { path: 'login', component: LoginComponent }
     ]),
