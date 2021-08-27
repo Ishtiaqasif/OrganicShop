@@ -5,8 +5,8 @@ import { Order } from 'src/app/Shared/Models/order';
 import { ShippingDetails } from 'src/app/Shared/Models/shipping-details';
 import { ShoppingCart } from 'src/app/Shared/Models/shopping-cart';
 import { User } from 'src/app/Shared/Models/user';
-import { AuthService } from '../../Shared/Services/auth.service';
-import { OrderService } from '../../Shared/Services/order.service';
+import { AuthService } from '../../../Shared/Services/auth.service';
+import { OrderService } from '../../../Shared/Services/order.service';
 
 @Component({
   selector: 'shipping-form',

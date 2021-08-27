@@ -4,8 +4,8 @@ import { Observable, pipe, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { ProductWithKey } from 'src/app/Shared/Models/product';
 import { ShoppingCart } from 'src/app/Shared/Models/shopping-cart';
-import { ProductService } from '../../Shared/Services/product.service';
-import { ShoppingCartService } from '../../Shared/Services/shopping-cart.service';
+import { ProductService } from '../../../Shared/Services/product.service';
+import { ShoppingCartService } from '../../../Shared/Services/shopping-cart.service';
 
 @Component({
   selector: 'app-products',

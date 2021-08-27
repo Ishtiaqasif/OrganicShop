@@ -18,38 +18,22 @@ import { AdminOrdersComponent } from './Admin/Components/admin-orders/admin-orde
 import { AdminProductsComponent } from './Admin/Components/admin-products/admin-products.component';
 import { ProductFormComponent } from './Admin/Components/product-form/product-form.component';
 import { BsNavbarComponent } from './Components/bs-navbar/bs-navbar.component';
-import { CheckOutComponent } from './Components/check-out/check-out.component';
+import { CheckOutComponent } from './Shopping/Components/check-out/check-out.component';
 import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
-import { MyOrdersComponent } from './Components/my-orders/my-orders.component';
-import { OrderSuccessComponent } from './Components/order-success/order-success.component';
-import { ProductFilterComponent } from './Components/products/product-filter/product-filter.component';
-import { ProductsComponent } from './Components/products/products.component';
-import { ShippingFormComponent } from './Components/shipping-form/shipping-form.component';
-import { ShoppingCartSummaryComponent } from './Components/shopping-cart-summary/shopping-cart-summary.component';
-import { ShoppingCartComponent } from './Components/shopping-cart/shopping-cart.component';
 import { AdminAuthGuard } from './Admin/Services/admin-auth-guard.service';
 import { AuthGuard as AuthGuard } from './Shared/Services/auth-guard.service';
 import { ShareModule } from './Shared/share.module';
 import { AdminModule } from './Admin/admin.module';
+import { ShoppingModule } from './Shopping/shopping.module';
+import { ProductsComponent } from './Shopping/Components/products/products.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    BsNavbarComponent,
-    HomeComponent,
-    ProductsComponent,
-    ShoppingCartComponent,
-    CheckOutComponent,
-    OrderSuccessComponent,
-    MyOrdersComponent,
-    ProductFilterComponent,
-    ShoppingCartSummaryComponent,
-    ShippingFormComponent
-  ],
+  declarations: [AppComponent, BsNavbarComponent, HomeComponent],
   imports: [
     ShareModule,
     AdminModule,
+    ShoppingModule,
     BrowserModule,
     FormsModule,
     NgxPaginationModule,
@@ -62,29 +46,17 @@ import { AdminModule } from './Admin/admin.module';
     AngularFireAuthModule,
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-      
-      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
-      { path: 'order-success/:key', component: OrderSuccessComponent, canActivate: [AuthGuard] },
-      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
-      
-      { path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard] },
-      { path: 'admin/products/:id', component: ProductFormComponent, canActivate: [AuthGuard, AdminAuthGuard] },
-      { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminAuthGuard] },
-      { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminAuthGuard] },
+      { path: 'login', component: LoginComponent }
     ]),
     NgbModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    })
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
-  providers: [
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
