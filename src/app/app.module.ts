@@ -12,25 +12,18 @@ import { CustomFormsModule } from 'ng2-validation';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { environment } from 'src/environments/environment';
 
+import { AdminModule } from './Admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminOrdersComponent } from './Admin/Components/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './Admin/Components/admin-products/admin-products.component';
-import { ProductFormComponent } from './Admin/Components/product-form/product-form.component';
-import { BsNavbarComponent } from './Components/bs-navbar/bs-navbar.component';
-import { CheckOutComponent } from './Shopping/Components/check-out/check-out.component';
-import { HomeComponent } from './Components/home/home.component';
-import { LoginComponent } from './Components/login/login.component';
-import { AdminAuthGuard } from './Admin/Services/admin-auth-guard.service';
-import { AuthGuard as AuthGuard } from './Shared/Services/auth-guard.service';
+import { CoreModule } from './Core/core.module';
 import { ShareModule } from './Shared/share.module';
-import { AdminModule } from './Admin/admin.module';
-import { ShoppingModule } from './Shopping/shopping.module';
 import { ProductsComponent } from './Shopping/Components/products/products.component';
+import { ShoppingModule } from './Shopping/shopping.module';
 
 @NgModule({
-  declarations: [AppComponent, BsNavbarComponent, HomeComponent],
+  declarations: [AppComponent],
   imports: [
+    CoreModule,
     ShareModule,
     AdminModule,
     ShoppingModule,
@@ -45,8 +38,7 @@ import { ProductsComponent } from './Shopping/Components/products/products.compo
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot([
-      { path: '', component: ProductsComponent },
-      { path: 'login', component: LoginComponent }
+      { path: '', component: ProductsComponent }
     ]),
     NgbModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
