@@ -14,7 +14,7 @@ export class ShoppingCartService {
 
   private createCart() {
     let cart: any = {
-      createdOn: new Date().toString(),
+      createdOn: new Date(),
       items: []
     };
     return this.db.list<any>('/shopping-carts').push(cart);
