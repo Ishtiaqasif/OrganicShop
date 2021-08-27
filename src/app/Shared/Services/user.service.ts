@@ -18,7 +18,6 @@ export class UserService {
     this.db.object('/users/' + user.uid).update({
       name: user.displayName,
       email: user.email,
-      isAdmin: true
     }).then((x) => {
     }).catch(err => {
       console.log('Error saving user: ', err);
