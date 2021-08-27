@@ -3,7 +3,6 @@ import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 
 import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { AppUser } from '../Models/app-user';
 
 @Injectable({
@@ -19,7 +18,7 @@ export class UserService {
     this.db.object('/users/' + user.uid).update({
       name: user.displayName,
       email: user.email,
-      isAdmin: true
+      isAdmin: false
     }).then((x) => {
     }).catch(err => {
       console.log('Error saving user: ', err);

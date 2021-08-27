@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CategoryService } from 'src/app/Services/category.service';
+import { CategoryService } from '../../../Shared/Services/category.service';
 
 @Component({
   selector: 'product-filter',

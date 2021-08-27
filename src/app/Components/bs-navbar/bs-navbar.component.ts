@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { AppUser } from 'src/app/Models/app-user';
-import { ShoppingCart, ShoppingCartWithKey } from 'src/app/Models/shopping-cart';
-import { ShoppingCartItem } from 'src/app/Models/ShoppingCartItem';
-import { AuthService } from 'src/app/Services/auth.service';
-import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
+import { AppUser } from 'src/app/Shared/Models/app-user';
+import { ShoppingCart, ShoppingCartWithKey } from 'src/app/Shared/Models/shopping-cart';
+import { ShoppingCartItem } from 'src/app/Shared/Models/ShoppingCartItem';
+import { AuthService } from '../../Shared/Services/auth.service';
+import { ShoppingCartService } from '../../Shared/Services/shopping-cart.service';
 
 @Component({
   selector: 'bs-navbar',

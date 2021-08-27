@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import {
   ShoppingCart,
-} from 'src/app/Models/shopping-cart';
-import { ShoppingCartService } from 'src/app/Services/shopping-cart.service';
+} from 'src/app/Shared/Models/shopping-cart';
+import { ShoppingCartService } from '../../Shared/Services/shopping-cart.service';
 
 @Component({
   selector: 'app-check-out',
